@@ -1,0 +1,58 @@
+<%- include("partials/header.ejs") %>
+
+<% diffTime = Math.abs(new Date() - new Date("2014-08-03")) %>
+<% years = Math.floor(diffTime / (1000 * 60 * 60 * 24 * 365)) %>
+
+<div class="container py-4">
+  
+  <h2><%= post.title %></h2>
+
+  <div class="row d-flex align-items-center my-3">
+    <div class="col-10 col-sm-8 col-lg-6">
+      <img class="img-fluid post-img d-block" src="<%= post.img_url %>">
+    </div>
+    <div class="col-lg-6 d-flex-column">
+      <h3 class="my-3"><%= post.subtitle %></h3>
+      <p class="my-5"><em>Author: <%= post.author %></em></p>
+      <form action="/delete/<%= post.id %>" method="post" class="m-0">
+        <button type="submit" class="btn btn-danger">Delete</button>
+      </form>
+      <button class="btn btn-success my-4"><a class="nav-link link-light" href="/edit/<%= post.id %>">Edit</a></button>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-12 col-xl-8">
+      <% for (let i=0; i<post.body.length; i++) { %>
+          <p><%= post.body[i] %></p>
+        <% } %>
+    </div>
+    <div class="col-12 col-xl-4">
+      <div class="position-sticky" style="top: 2rem;">
+        <div class="p-4 mb-3 bg-body-tertiary rounded">
+          <h4 class="fst-italic">About</h4>
+          <p class="mb-1">I am dog, my name is Jake. I am <%= years %> years old.</p>
+          <p class="mb-1">I love my ball (it's MINE), toy fluffies, and sleeping.</p>
+          <p class="mb-1">My favourite foods are things I can <em>crunch</em>.</p>
+        </div>
+
+        <div>
+          <h4 class="fst-italic border-bottom">Hit me up! (actually...don't)</h4>
+          <ul class="list-unstyled">
+            <ol class="list-unstyled">
+              <li><a href="#">GitHub</a></li>
+              <li><a href="#">Social</a></li>
+              <li><a href="#">Facebook</a></li>
+            </ol>    
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+</div>
+
+
+<%- include("partials/footer.ejs") %>

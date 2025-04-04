@@ -1,0 +1,35 @@
+<%- include("partials/header.ejs") %>
+
+<div class="container py-4">
+  
+    <h2>Edit: <%= post.title %></h2>
+
+    <form action="/update/<%= post.id %>" method="post">
+        <div class="mb-3">
+            <label for="title" class="form-label">Article Title</label>
+            <input type="text" class="form-control" name="title" value="<%= post.title %>">
+        </div>
+        <div class="mb-3">
+            <label for="subtitle" class="form-label">Subtitle</label>
+            <input type="text" class="form-control" name="subtitle" value="<%= post.subtitle %>">
+        </div>
+        <div class="mb-3">
+            <label for="author" class="form-label">Author</label>
+            <input type="author" class="form-control" name="author" value="<%= post.author %>">
+        </div>
+        <div class="mb-3">
+            <label for="img_url" class="form-label">Image Location</label>
+            <input type="img_url" class="form-control" name="img_url" value="<%= post.img_url %>">
+        </div>
+        <div class="mb-3">
+            <label for="body" class="form-label"></label>
+            <textarea rows="20" class="form-control" name="body"><% for (let i=0; i<post.body.length; i++) { %><%= post.body[i]%>
+                <%_ %><%} %></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+   
+  </div>
+
+
+<%- include("partials/footer.ejs") %>
